@@ -30,7 +30,6 @@
 
 
 ; Exercise 1.10
-
 (define (A x y)
   (cond ((= y 0) 0)
         ((= x 0) (* 2 y))
@@ -154,7 +153,32 @@
 
 
 ; Exercise 1.12
+(define (pascals-triangle row col)
+  (cond ((or (< col 0) (< row 0)) 0)
+        ((or (= col 0) (= col row)) 1)
+        (else (+ (pascals-triangle (- row 1) col)
+                 (pascals-triangle (- row 1) (- col 1))))))
+
+
 ; Exercise 1.13
+(define (pow n ex)
+  (define (pow-iter n a count)
+    (if (= count 1)
+      n
+      (pow-iter (* n a) a (-1+ count))))
+
+  (pow-iter n n ex))
+
+(define (fib-test n)
+  (/
+    (pow
+      (/
+        (+ 1 (sqrt 5))
+        2)
+      n)
+    (sqrt 5)))
+
+
 ; Exercise 1.14
 ; Exercise 1.15
 ; Exercise 1.16
